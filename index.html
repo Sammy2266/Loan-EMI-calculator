@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMI Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
     <style>
         :root {
             --bg-color: #f4f4f4;
@@ -84,6 +85,7 @@
             right: 20px;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .switch {
@@ -130,15 +132,27 @@
         input:checked + .slider:before {
             transform: translateX(20px);
         }
+
+        .theme-icon {
+            font-size: 24px;
+            margin-left: 10px;
+            transition: color 0.4s ease;
+        }
+
+        .dark-mode .theme-icon {
+            color: yellow;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="toggle-container">
+    <div class="toggle-container" onclick="toggleTheme()">
         <label class="switch">
-            <input type="checkbox" id="themeToggle" onclick="toggleTheme()">
+            <input type="checkbox" id="themeToggle">
             <span class="slider"></span>
         </label>
+        <i id="themeIcon" class="fa-solid fa-moon theme-icon"></i>
     </div>
 
     <div class="container">
@@ -185,6 +199,20 @@
 
         function toggleTheme() {
             document.body.classList.toggle("dark-mode");
+            let icon = document.getElementById("themeIcon");
+            let themeToggle = document.getElementById("themeToggle");
+
+            if (document.body.classList.contains("dark-mode")) {
+                icon.classList.remove("fa-moon");
+                icon.classList.add("fa-sun");
+                icon.style.color = "yellow";
+                themeToggle.checked = true;
+            } else {
+                icon.classList.remove("fa-sun");
+                icon.classList.add("fa-moon");
+                icon.style.color = "";
+                themeToggle.checked = false;
+            }
         }
     </script>
 
