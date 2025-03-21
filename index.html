@@ -5,52 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMI Calculator</title>
     <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-color: #000;
+            --container-bg: #fff;
+            --button-bg: #007bff;
+            --button-hover: #0056b3;
+            --border-color: #ccc;
+        }
+
+        .dark-mode {
+            --bg-color: #181818;
+            --text-color: #fff;
+            --container-bg: #242424;
+            --button-bg: #0d6efd;
+            --button-hover: #0b5ed7;
+            --border-color: #444;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
         }
+
         .container {
-            background: #fff;
+            background: var(--container-bg);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             width: 300px;
             text-align: center;
         }
+
         h2 {
             margin-bottom: 20px;
         }
+
         input {
             width: 100%;
             padding: 8px;
             margin: 10px 0;
-            border: 1px solid #ccc;
+            border: 1px solid var(--border-color);
             border-radius: 5px;
+            background: var(--container-bg);
+            color: var(--text-color);
         }
+
         button {
-            background-color: #007bff;
+            background-color: var(--button-bg);
             color: white;
             border: none;
             padding: 10px;
             width: 100%;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 10px;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: var(--button-hover);
         }
+
         .result {
             margin-top: 20px;
             font-weight: bold;
         }
+
+        .toggle-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .toggle-container button {
+            padding: 5px 10px;
+            font-size: 14px;
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
+
+    <div class="toggle-container">
+        <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
 
     <div class="container">
         <h2>Loan EMI Calculator</h2>
@@ -92,6 +141,10 @@
                 <p>Total Interest: KSh ${totalInterest.toFixed(2)}</p>
                 <p>Total Amount Payable: KSh ${totalAmount.toFixed(2)}</p>
             `;
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
         }
     </script>
 
