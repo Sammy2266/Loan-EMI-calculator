@@ -44,9 +44,9 @@ function App() {
             {result && (
                 <div>
                     <h2>Results:</h2>
-                    <p>Monthly EMI: ₹{result.monthlyEMI}</p>
-                    <p>Total Interest: ₹{result.totalInterest}</p>
-                    <p>Total Amount Payable: ₹{result.totalAmount}</p>
+                    <p>Monthly EMI: KSh{result.monthlyEMI}</p>
+                    <p>Total Interest: KSh{result.totalInterest}</p>
+                    <p>Total Amount Payable: KSh{result.totalAmount}</p>
                 </div>
             )}
         </div>
